@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Text, Button } from "@chakra-ui/react";
 
 const HomePage = () => {
+  alert("HomePage.js");
   return (
     <Box p={4}>
       <Flex justifyContent="space-between" alignItems="center" mb={8}>

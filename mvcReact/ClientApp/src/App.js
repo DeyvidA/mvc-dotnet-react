@@ -1,27 +1,21 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import AppLayout from "./components/AppLayout";
-import { Route } from "react-router";
-import HomePage from "./Pages/HomePage";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import { Routes } from "react-router-dom";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
-
-  useEffect(async () => {
-    const response = await fetch("api/user/GetUsers");
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    const data = await response.json();
-
-    console.log(data);
-    setUsers(data);
-  }, []);
-
   return (
-    <AppLayout>
-      <Route exact path="/" component={HomePage} />
-    </AppLayout>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+
+      {/* <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+        </Routes> */}
+    </Router>
   );
 };
 
